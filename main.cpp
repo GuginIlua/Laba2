@@ -288,7 +288,7 @@ int main() {
         if(a==1){
             cout<<"1-list of your students,2-change student marks"<<endl;
             cin>>c;
-            if(c==1){                                                    //LOAD LIST OF YOUR TEACHER
+            if(c==1){                                                    //LOAD LIST OF YOUR STUDENTS
                 arr10=load_stdmark(f);
                 arr9=load_stdclas(f);
                 arr4=load_clas(s);
