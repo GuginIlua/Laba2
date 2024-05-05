@@ -45,7 +45,7 @@ int main() {
         if(adm==1){
             cout<<"1-create full new array of teachers,2-add new teachers,3-delete teachers,4-load list of teachers"<<endl;
             cin>>admt;
-                if(admt==1){                                    //NEW ARRAY OF TEATHERS
+                if(admt==1){                                    //NEW ARRAY OF TEACHERS
                     Prepod_pass.clear();
                     Prepod_subj.clear();
                     Prepod_class.clear();
@@ -288,7 +288,7 @@ int main() {
         if(a==1){
             cout<<"1-list of your students,2-change student marks"<<endl;
             cin>>c;
-            if(c==1){
+            if(c==1){                                                    //LOAD LIST OF YOUR TEACHER
                 arr10=load_stdmark(f);
                 arr9=load_stdclas(f);
                 arr4=load_clas(s);
@@ -310,7 +310,7 @@ int main() {
                 }
             }
 
-            if(c==2){
+            if(c==2){                                                     //CHANGE MARKS
                 arr4=load_clas(s);
                 arr9=load_stdclas(f);
                 arr10=load_stdmark(f);
@@ -351,7 +351,7 @@ int main() {
         }
         }
     }
-    if(type==3){
+    if(type==3){                                                           //SHOW MARKS(AS A STUDENT)
         cout<<"Enter your name:  "<<endl;
         cin>>name2;
         arr10=load_stdmark(n);
