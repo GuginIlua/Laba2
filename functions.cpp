@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include <vector>
 #include "functions.h"
 
 using namespace std;
@@ -86,7 +87,7 @@ void functions::save_stdclass(std::map<int, string> Student_class, const int &n)
          file << it->first << "   "<< it->second << endl;
       }
 }
-void functions::save_stdmark(std::map<int, string> Student_mark, const int &n) {
+void functions::save_stdmark(std::map<int, std::string> Student_mark, const int &n) {
     ofstream file("Marks.txt");
     if (!file.is_open()) {
         cout << "save: file error" << endl;
@@ -95,6 +96,7 @@ void functions::save_stdmark(std::map<int, string> Student_mark, const int &n) {
     file << n << endl;
     for (auto it = Student_mark.begin(); it != Student_mark.end(); ++it)
       {
+
          file << it->first << "   "<< it->second << endl;
       }
 }

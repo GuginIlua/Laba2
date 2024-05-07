@@ -85,7 +85,7 @@ void Student_clas::setClas(const string &clas) {
     if (_clas != clas)
         _clas = clas;
 }
-string Student_mark::mark() const {
+std::string Student_mark::mark() const {
     return _mark;
 }
 int Student_mark::id() const {
@@ -95,7 +95,7 @@ void Student_mark::setId(int &id) {
     if (_id != id)
         _id = id;
 }
-void Student_mark::setMark(const string &mark) {
+void Student_mark::setMark(const std::string &mark) {
     if (_mark != mark)
         _mark = mark;
 }

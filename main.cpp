@@ -4,7 +4,7 @@
 #include <string>
 #include "person.h"
 #include "functions.h"
-
+//A.2.3.4.5.6.7.8
 using namespace std;
 using namespace functions;
 
@@ -21,12 +21,12 @@ int main() {
     int a=0;
     int c,f{};
     int key=0,kay=0;
-    int type;
+    int type,d;
     int adm=0;
     int admt;
     int p=0;
     int id,idd;
-    string pass,name,subj,clss,name2,marks;
+    string pass,name,subj,clss,name2,marks,mark;
     n=0;
     Prepod_pas * arr2 = nullptr;
     Prepod_name * arr11 = nullptr;
@@ -45,7 +45,7 @@ int main() {
         if(adm==1){
             cout<<"1-create full new array of teachers,2-add new teachers,3-delete teachers,4-load list of teachers"<<endl;
             cin>>admt;
-                if(admt==1){                                    //NEW ARRAY OF TEACHERS
+                if(admt==1){                                    //NEW ARRAY OF TEATHERS
                     Prepod_pass.clear();
                     Prepod_subj.clear();
                     Prepod_class.clear();
@@ -166,7 +166,7 @@ int main() {
                     }
             }
 
-    if(adm==2){
+        if(adm==2){
         cout<<"1-create full new array of students,2-add new student,3-delete student,4-load list of student"<<endl;
         cin>>admt;
             if(admt==1){                                    //NEW ARRAY OF STUDENTS
@@ -264,7 +264,7 @@ int main() {
                 }
 
         }
-    if(adm==3) return 0;
+         if(adm==3) return 0;
         }
     }
     if(type==2){
@@ -286,9 +286,9 @@ int main() {
         }
         while(1){
         if(a==1){
-            cout<<"1-list of your students,2-change student marks"<<endl;
+            cout<<"1-list of your students,2-change student marks,3-exit"<<endl;
             cin>>c;
-            if(c==1){                                                    //LOAD LIST OF YOUR STUDENTS
+            if(c==1){
                 arr10=load_stdmark(f);
                 arr9=load_stdclas(f);
                 arr4=load_clas(s);
@@ -310,7 +310,7 @@ int main() {
                 }
             }
 
-            if(c==2){                                                     //CHANGE MARKS
+            if(c==2){
                 arr4=load_clas(s);
                 arr9=load_stdclas(f);
                 arr10=load_stdmark(f);
@@ -319,11 +319,12 @@ int main() {
                 cout<<"Enter student name:   ";
                 cin>>name2;
                 for(int i=0;i<f;i++){
-                    if(arr12[i].name()==name2)
-                        idd=arr12[i].id();
-                    kay=1;
+                    if(arr12[i].name()==name2){
+                    idd=arr12[i].id();
+                    kay++;
+                    }
                 }
-                if(kay!=1) cout<<"Student not found"<<endl;
+                if(kay==0) cout<<"Student not found"<<endl;
                 if(kay==1){
                     for(int i=0;i<f;i++){
                         if(arr10[i].id()==idd){
@@ -346,20 +347,67 @@ int main() {
                     Student_namee.clear();
                     Student_marks.clear();
                 }
-}
+                if(kay>1){
+                    for(int i=0;i<f;i++){
+                        if(arr12[i].name()==name2)
+                        cout<<arr12[i].name()<<"   "<<arr10[i].mark()<<"   "<<arr12[i].id()<<endl;
+                    }
+                    cout<<"Enter id of student to change marks:  ";
+                    cin>>idd;
+                    for(int i=0;i<f;i++){
+                        if(arr10[i].id()==idd){
+                            cout<<"Enter new marks:   ";
+                            cin>>marks;
+                            Student_namee.insert(pair<int,string>(idd,name2));
+                            Student_class.insert(pair<int,string>(idd,arr9[i].clas()));
+                            Student_marks.insert(pair<int,string>(idd,marks));
+                        }
+                        else{
+                            Student_namee.insert(pair<int,string>(arr10[i].id(),arr12[i].name()));
+                            Student_class.insert(pair<int,string>(arr10[i].id(),arr9[i].clas()));
+                            Student_marks.insert(pair<int,string>(arr10[i].id(),arr10[i].mark()));
+                        }
+                    }
+                    save_stdclass(Student_class,f);
+                    save_stdname(Student_namee,f);
+                    save_stdmark(Student_marks,f);
+                    Student_class.clear();
+                    Student_namee.clear();
+                    Student_marks.clear();
+                }
+
+            }
             if(c==3) return 0;
-        }
+            }
         }
     }
-    if(type==3){                                                           //SHOW MARKS(AS A STUDENT)
+    if(type==3){
         cout<<"Enter your name:  "<<endl;
         cin>>name2;
         arr10=load_stdmark(n);
         arr12=load_stdname(n);
+        arr9=load_stdclas(n);
         for(int i=0;i<n;i++){
             if(name2==arr12[i].name()){
-                cout<<arr12[i].name()<<"   "<<arr10[i].mark()<<endl;
-                break;
+                kay++;
+            }
+        }
+        if(kay==0) cout<<"Student not found"<<endl;
+        if(kay==1){
+            for(int i=0;i<n;i++){
+                if(name2==arr12[i].name()){
+                    cout<<arr12[i].name()<<"   "<<arr10[i].mark()<<endl;
+                    break;
+                }
+            }
+        }
+        if(kay>1){
+            cout<<"Enter your class:   ";
+            cin>>clss;
+            for(int i=0;i<n;i++){
+                if(name2==arr12[i].name()&&clss==arr9[i].clas()){
+                    cout<<arr12[i].name()<<"   "<<arr10[i].mark()<<endl;
+                }
             }
         }
     }
